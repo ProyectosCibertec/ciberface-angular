@@ -1,1 +1,33 @@
-<router-outlet></router-outlet>
+<header class="position-relative top-0 start-0 align-items-center justify-content-center w-100 h-16 p-3 bg-dark z-3">
+    <nav class="container d-flex align-items-center justify-content-between mx-auto">
+        <a href="#" [routerLink]="['inicio']" class="fs-5 text-decoration-none fw-bold text-white">Ciberface</a>
+        <div>
+            <a href="#" class="text-white text-decoration-none">Chatear</a>
+            <button class="dropdown ms-4 fw-bold text-dark bg-white rounded">
+                <button class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle border-0"
+                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img alt="" width="20" height="20" class="rounded-circle me-2" id="user-photo"> <strong
+                        sec:authentication="name">anonymous</strong>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li>
+                        <button class="dropdown-item" id="edit-button" (click)="logout()">Editar perfil</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" id="logout-button" (click)="logout()">Salir</button>
+                    </li>
+                </ul>
+            </button>
+        </div>
+    </nav>
+</header>
+<div class="container relative flex flex-col min-h-screen mx-auto">
+    <main class="flex items-center justify-center flex-1 py-4">
+        <router-outlet></router-outlet>
+    </main>
+    <footer class="flex items-center justify-center h-16 bg-gray-800">
+        <div class="container mx-auto text-center text-white">
+            © 2023 Ciberface
+        </div>
+    </footer>
+</div>

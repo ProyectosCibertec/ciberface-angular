@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/data/service/auth.service';
 
 @Component({
   selector: 'app-content-layout',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-layout.component.scss']
 })
 export class ContentLayoutComponent {
+  constructor(private auth: AuthService) { }
 
+  logout() {
+    this.auth.logout()
+  }
 }

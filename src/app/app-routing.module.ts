@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { AuthGuard } from './core/guard/auth.guard';
+import { LoginGuard } from './core/guard/login.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContentLayoutComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard('auth/login')],
     children: [
       {
         path: 'inicio',
@@ -32,6 +33,7 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
+    canActivate: [LoginGuard('inicio')],
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
   {

@@ -1,1 +1,46 @@
-<p>register works!</p>
+<div class="container vh-100">
+    <div class="col mx-0 d-flex justify-content-center align-items-center vh-100">
+        <div class="row d-flex gx-5 mt-4 justify-content-center">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 d-flex align-items-center">
+                <div class="card text-center" style="background-color: rgba(0, 0, 0, 0); border: 0;">
+                    <div class="card-body">
+                        <img alt="Icono Emilima" src="assets/ciberface.svg" class="w-50">
+                        <h1 class="text-center text-dark fw-bold" [style.fontSize]="'4em'">CIBERFACE</h1>
+                        <p>Somos la red social oficial de Cibertec 😎</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card rounded-5 p-3" style="background-color: #FFFFFF">
+                    <div class="card-body text-center">
+                        <form [formGroup]="registerForm" (ngSubmit)="register()">
+                            <div class="mb-3">
+                                <input class="form-control p-3" id="username" type="text" placeholder="Usuario" formControlName="userName" />
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control p-3" id="firstname" type="text" placeholder="Nombre" formControlName="firstName" />
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control p-3" id="lastname" type="text" placeholder="Apellido" formControlName="lastName" />
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control p-3" id="email" type="text" placeholder="Correo electrónico" formControlName="email" />
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control p-3" id="password" type="password" placeholder="Contraseña" formControlName="password" />
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control p-3" id="repeatPassword" type="password" placeholder="Repetir contraseña" formControlName="repeatPassword" />
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 p-3">REGISTRARME</button>
+                        </form>
+                        <hr class="hr hr-blurry" />
+                        <a class="btn btn-danger p-3" [routerLink]="['/auth/login']">YA TENGO UNA CUENTA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
