@@ -8,7 +8,9 @@ import {
 } from '@angular/common/http';
 import { AuthService } from 'src/app/data/service/auth.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class TokenInterceptor implements HttpInterceptor {
     constructor(private auth: AuthService) { }
 
@@ -17,11 +19,13 @@ export class TokenInterceptor implements HttpInterceptor {
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
         const authToken = this.auth.getToken();
-        request = request.clone({
-            setHeaders: {
-                Authorization: "Bearer " + authToken
-            }
-        });
+        if (authToken != null) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${authToken}`
+                }
+            });
+        }
         return next.handle(request);
     }
 }

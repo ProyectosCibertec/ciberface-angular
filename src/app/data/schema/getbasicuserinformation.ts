@@ -1,4 +1,4 @@
-export class EditUserInformation {
+export class GetBasicUserInformation {
     userId: number;
     firstName: string;
     lastName: string;

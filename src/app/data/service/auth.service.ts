@@ -15,7 +15,7 @@ export class AuthService {
   login(login: JwtRequest) {
     return this.http.post(this.authUrl, login).subscribe((res: any) => {
       localStorage.setItem("access_token", res.token)
-      localStorage.setItem("logged_user", login.username as string)
+      localStorage.setItem("logged_user_id", res.userId)
       this.router.navigate(['inicio'])
     })
   }
@@ -28,9 +28,12 @@ export class AuthService {
     return localStorage.getItem("access_token")
   }
 
+  getUserId() {
+    return localStorage.getItem("logged_user_id")
+  }
+
   logout() {
-    localStorage.removeItem("access_token")
-    localStorage.removeItem("logged_user")
+    localStorage.clear()
     this.router.navigate(['/auth/login'])
   }
 }

@@ -3,11 +3,11 @@
         <a href="#" [routerLink]="['inicio']" class="fs-5 text-decoration-none fw-bold text-white">Ciberface</a>
         <div>
             <a href="#" class="text-white text-decoration-none">Chatear</a>
-            <button class="dropdown ms-4 fw-bold text-dark bg-white rounded">
-                <button class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle border-0"
+            <button class="dropdown ms-4 fw-bold text-dark bg-transparent rounded border-0">
+                <button class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle border-0 bg-white"
                     id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png" alt="" width="20" height="20" class="rounded-circle me-2" id="user-photo"> <strong
-                        sec:authentication="name">anonymous</strong>
+                    <img src="{{user.photoUrl}}" alt="" width="20" height="20" class="rounded-circle me-2" id="user-photo" [style.objectFit]="'cover'"> <strong
+                        sec:authentication="name">{{user.userName}}</strong>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                     <li>
