@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Chat } from 'src/app/data/schema/chat';
 import { Comment } from 'src/app/data/schema/comment';
+import { Friendship } from 'src/app/data/schema/friendship';
 import { GetBasicUserInformation } from 'src/app/data/schema/getbasicuserinformation';
 import { Like } from 'src/app/data/schema/like';
 import { Post } from 'src/app/data/schema/post';
 import { User } from 'src/app/data/schema/user';
 import { AuthService } from 'src/app/data/service/auth.service';
 import { CommentService } from 'src/app/data/service/comment.service';
+import { FriendshipService } from 'src/app/data/service/friendship.service';
 import { LikeService } from 'src/app/data/service/like.service';
 import { PostService } from 'src/app/data/service/post.service';
 import { UserService } from 'src/app/data/service/user.service';
@@ -34,6 +37,7 @@ export class HomeComponent implements OnInit {
     private postService: PostService, 
     private commentService: CommentService, 
     private likeService: LikeService, 
+    private friendshipService: FriendshipService, 
     private auth: AuthService, 
     private fb: FormBuilder) { }
 
@@ -100,6 +104,18 @@ export class HomeComponent implements OnInit {
       let post = this.posts.find((post) => post.postId == postId)
       if (post != undefined) {
         post.dislikes += 1
+      }
+    })
+  }
+
+  addFriendship(unfriendId: number): void {
+    let friendship = new Friendship()
+    friendship.userId.userId = this.user.userId
+    friendship.friendId.userId = unfriendId
+    friendship.chatId = new Chat()
+    this.friendshipService.add(friendship).subscribe((res) => {
+      if (res == 1) {
+        this.unfriendUsers = this.unfriendUsers.filter((user) => user.userId != unfriendId)
       }
     })
   }

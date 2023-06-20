@@ -2,10 +2,10 @@ import { Friendship } from "./friendship";
 
 export class Chat {
     chatId: number;
-    friendshipId: Friendship;
+    isBlocked: number;
 
     constructor() {
         this.chatId = 0;
-        this.friendshipId = new Friendship();
+        this.isBlocked = 0;
     }
 }

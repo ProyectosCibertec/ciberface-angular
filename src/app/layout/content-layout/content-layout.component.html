@@ -2,7 +2,7 @@
     <nav class="container d-flex align-items-center justify-content-between mx-auto">
         <a href="#" [routerLink]="['inicio']" class="fs-5 text-decoration-none fw-bold text-white">Ciberface</a>
         <div>
-            <a href="#" class="text-white text-decoration-none">Chatear</a>
+            <a href="#" class="text-white text-decoration-none" [routerLink]="['chat']">Chatear</a>
             <button class="dropdown ms-4 fw-bold text-dark bg-transparent rounded border-0">
                 <button class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle border-0 bg-white"
                     id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -11,7 +11,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                     <li>
-                        <button class="dropdown-item" id="edit-button" (click)="logout()">Editar perfil</button>
+                        <button class="dropdown-item" id="edit-button" [routerLink]="['perfil']">Editar perfil</button>
                     </li>
                     <li>
                         <button class="dropdown-item" id="logout-button" (click)="logout()">Salir</button>
