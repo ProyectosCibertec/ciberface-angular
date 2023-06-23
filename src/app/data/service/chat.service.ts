@@ -13,4 +13,8 @@ export class ChatService {
   add = (chat: Chat) => {
     return this.http.post<Chat>(`${this.url}/`, chat)
   }
+
+  get = (chatId: number) => {
+    return this.http.get<Chat>(`${this.url}/${chatId}`)
+  }
 }

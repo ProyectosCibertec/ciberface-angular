@@ -18,4 +18,8 @@ export class UserService {
   getNoFriendsByUser = (userId: number) => {
     return this.http.get<User[]>(`${this.url}/${userId}/get-no-friends`)
   }
+
+  getFriendsByUser = (userId: number) => {
+    return this.http.get<User[]>(`${this.url}/${userId}/get-friends`)
+  }
 }

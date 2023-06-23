@@ -1,1 +1,49 @@
-<p>chat works!</p>
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="card rounded-5 p-2 h-100" style="background-color: #FFFFFF">
+            <div class="card-body text-center">
+                <div class="d-flex flex-column">
+                    <button class="d-flex mt-2 p-2 btn btn-light" *ngFor="let friendUser of friendUsers"
+                        (click)="getFriendship(friendUser.userId)">
+                        <div class="d-flex flex-fill align-items-center">
+                            <img [style.objectFit]="'cover'" src="{{friendUser.photoUrl}}" alt="" width="25" height="25"
+                                class="rounded-circle me-2" id="user-photo">
+                            <h2 class="h6 d-inline ms-3 mb-0">{{friendUser.firstName}}</h2>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card rounded-5 h-100" style="background-color: #FFFFFF">
+            <div class="card-body">
+                <div *ngFor="let message of messages">
+                    <div class="d-flex flex-row justify-content-end mb-4 pt-1" *ngIf="message.userId.userId != user.userId">
+                        <div>
+                            <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">{{message.messageContent}}</p>
+                            <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">{{message.creationDate}}</p>
+                        </div>
+                        <img src="{{message.userId.photoUrl}}"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                    </div>
+                    <div class="d-flex flex-row justify-content-start mb-4" *ngIf="message.userId.userId == user.userId">
+                        <img src="{{user.photoUrl}}"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div>
+                            <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">{{message.messageContent}}</p>
+                            <p class="small ms-3 mb-3 rounded-3 text-muted">{{message.creationDate}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3" [formGroup]="addMessageForm">
+                    <img [style.objectFit]="'cover'" src="{{user.photoUrl}}" alt="" width="45" height="45"
+                        class="rounded-circle me-2" id="user-photo">
+                    <input type="text" class="form-control form-control-md" id="exampleFormControlInput1"
+                        placeholder="Escribe algo" formControlName="messageContent">
+                <button type="button" class="btn btn-primary ms-3" (click)="addMessage()">ENVIAR</button>
+            </div>
+        </div>
+    </div>
+</div>

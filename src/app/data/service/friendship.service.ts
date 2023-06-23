@@ -13,4 +13,13 @@ export class FriendshipService {
   add = (friendship: Friendship) => {
     return this.http.post<Number>(`${this.url}/`, friendship)
   }
+
+  getByFriendAndUserIds = (userId: number, friendId: number) => {
+    return this.http.get<Friendship>(`${this.url}/get-by-user-friend-id`, {
+      params: {
+        "userId": userId,
+        "friendId": friendId
+      }
+    })
+  }
 }

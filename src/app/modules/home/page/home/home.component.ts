@@ -116,6 +116,7 @@ export class HomeComponent implements OnInit {
     this.friendshipService.add(friendship).subscribe((res) => {
       if (res == 1) {
         this.unfriendUsers = this.unfriendUsers.filter((user) => user.userId != unfriendId)
+        this.user.friendshipsAmount++
       }
     })
   }
