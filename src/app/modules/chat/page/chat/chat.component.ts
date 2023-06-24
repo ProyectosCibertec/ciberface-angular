@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Chat } from 'src/app/data/schema/chat';
 import { GetBasicUserInformation } from 'src/app/data/schema/getbasicuserinformation';
@@ -14,10 +14,10 @@ import { UserService } from 'src/app/data/service/user.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
   user: GetBasicUserInformation = new GetBasicUserInformation()
   friendUsers: User[] = []
-  messages: Message[] = []
+  messages: Message[] = this.chatService.getMessages();
   chat: Chat = new Chat()
 
   addMessageForm = this.fb.group({
@@ -33,6 +33,7 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.chatService.connect()
     let userId = localStorage.getItem('logged_user_id')
     this.userService.getBasicUserInformation(parseInt(userId!)).subscribe((res) => {
       this.user = res
@@ -40,6 +41,10 @@ export class ChatComponent implements OnInit {
     this.userService.getFriendsByUser(parseInt(userId!)).subscribe((res) => {
       this.friendUsers = res
     })
+  }
+
+  ngOnDestroy(): void {
+    this.chatService.closeConnection();
   }
 
   getFriendship(friendId: number): void {
@@ -68,7 +73,8 @@ export class ChatComponent implements OnInit {
     message.userId.userId = this.user.userId
     message.chatId.chatId = this.chat.chatId
     this.messageService.add(message).subscribe((res) => {
-      this.messages.push(res);
+      this.chatService.sendMessage(res)
+      this.messages = this.chatService.getMessages()
       this.addMessageForm.reset()
     })
   }
