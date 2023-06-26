@@ -1,1 +1,62 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <img class="card-img-top" src="{{user.photoUrl}}" alt="Profile Picture">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" value="{{user.userName}}">
+          </div>
+          <div class="col-md-6">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" id="firstname" value="{{user.firstName}}">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" id="lastname" value="{{user.lastName}}">
+          </div>
+          <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" value="{{user.email}}">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label for="biography">Biography</label>
+            <textarea class="form-control" id="biography">{{user.biography}}</textarea>
+          </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="edit(editUser)">Guardar</button>
+            </div>
+          </div>
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <label for="password">Current Password</label>
+            <input type="password" class="form-control" id="password">
+          </div>
+          <div class="col-md-4">
+            <label for="newPassword">New Password</label>
+            <input type="password" class="form-control" id="newPassword">
+          </div>
+          <div class="col-md-4">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPassword">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <button class="btn btn-primary" (click)="update(password)">Actualizar Password</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
