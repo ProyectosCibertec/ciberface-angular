@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JwtRequest } from '../schema/jwtrequest';
 import { Router } from '@angular/router';
+import { JwtRequest } from '../schema/jwtrequest';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,14 @@ export class AuthService {
 
   register(register: any) {
     return this.http.post(this.userUrl, register)
+  }
+
+  edit(edit: any) {
+    return this.http.put(this.userUrl, edit)
+  }
+
+  update(update: any) {
+    return this.http.put(this.userUrl, update)
   }
 
   getToken() {
