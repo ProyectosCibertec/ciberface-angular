@@ -36,20 +36,16 @@ export class ProfileComponent{
     })
   }
 
-  edit(editUser: EditUserInformation) {
-    let userId = localStorage.getItem('logged_user_id')
-    this.userService.editUserInformation(parseInt(userId!), editUser).subscribe(
-      res => this.router.navigate(['/perfil']),
-      err => console.log(err)
-    )
+  edit() {
+    this.auth.edit(this.editForm.value).subscribe(() => {
+      this.router.navigate(['perfil'])
+    })
   }
 
-  update(password: ChangePassword) {
-    let userId = localStorage.getItem('logged_user_id')
-    this.userService.changePassword(parseInt(userId!), password).subscribe(
-      res => this.router.navigate(['/inicio']),
-      err => console.log(err)
-    )
+  update() {
+    this.auth.update(this.editForm.value).subscribe(() => {
+      this.router.navigate(['inicio'])
+    })
   }
 
   logout() {

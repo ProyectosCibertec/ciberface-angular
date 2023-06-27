@@ -24,6 +24,14 @@ export class AuthService {
     return this.http.post(this.userUrl, register)
   }
 
+  edit(edit: any) {
+    return this.http.put(this.userUrl, edit)
+  }
+
+  update(update: any) {
+    return this.http.put(this.userUrl, update)
+  }
+
   getToken() {
     return localStorage.getItem("access_token")
   }
