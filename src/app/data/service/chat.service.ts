@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chat } from '../schema/chat';
-import { AuthService } from './auth.service';
 import { Message } from '../schema/message';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,13 @@ export class ChatService {
   socket?: WebSocket;
   messages: Message[] = []
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+    private messageService: MessageService
+  ) { }
 
   add = (chat: Chat) => {
-    return this.http.post<Chat>(`${this.url}/`, chat)
+    return this.http.post<Chat>(`${this.url}`, chat)
   }
 
   get = (chatId: number) => {
@@ -53,5 +56,18 @@ export class ChatService {
 
   getMessages(): Message[] {
     return this.messages
+  }
+
+  getMessagesByChatId(chatId: number, refreshMessages: Function) {
+    return this.messageService.getByChatId(chatId).subscribe((res) => {
+      this.messages = res
+      refreshMessages(this.messages)
+    })
+  }
+
+  addMessage(message: Message): void {
+    this.messageService.add(message).subscribe((res) => {
+      this.sendMessage(res)
+    })
   }
 }

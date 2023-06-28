@@ -2,8 +2,8 @@
     <div class="col-lg-3">
         <div class="card rounded-5 p-2" style="background-color: #FFFFFF">
             <div class="card-body text-center">
-                <img src="{{user.photoUrl}}"
-                    class="rounded-circle" width="180" height="180" alt="" [style.objectFit]="'cover'">
+                <img src="{{user.photoUrl}}" class="rounded-circle" width="180" height="180" alt=""
+                    [style.objectFit]="'cover'">
                 <h1 class="h2 fw-bold">{{user.firstName}}</h1>
                 <p>{{user.biography}}</p>
                 <span class="h4 d-block">Amigos</span>
@@ -15,7 +15,8 @@
         <div class="card rounded-5 p-2" style="background-color: #FFFFFF">
             <div class="card-body text-center d-flex">
                 <form class="flex-fill" [formGroup]="addPostForm">
-                    <textarea rows="3" placeholder="Escribe lo que piensas..." class="form-control" formControlName="postContent"></textarea>
+                    <textarea rows="3" placeholder="Escribe lo que piensas..." class="form-control"
+                        formControlName="postContent"></textarea>
                 </form>
                 <div class="p-3 d-flex align-items-center justify-content-center">
                     <button type="button" class="btn btn-primary" (click)="addPost()">PUBLICAR</button>
@@ -28,12 +29,15 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="d-flex flex-fill align-items-center">
-                            <img [style.objectFit]="'cover'" src="{{post.userId.photoUrl}}" alt="" width="30" height="30" class="rounded-circle me-2" id="user-photo">
+                            <img [style.objectFit]="'cover'" src="{{post.userId.photoUrl}}" alt="" width="30"
+                                height="30" class="rounded-circle me-2" id="user-photo">
                             <h2 class="h5 d-inline ms-3">{{post.userId.firstName}}</h2>
                         </div>
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path
+                                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                             </svg>
                         </div>
                     </div>
@@ -42,34 +46,43 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary" (click)="addLike(post.postId)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
                             </svg>
-                             ({{post.likes}})</button>
+                            ({{post.likes}})</button>
                         <button type="button" class="btn btn-danger ms-2" (click)="addDislike(post.postId)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-down-fill" viewBox="0 0 16 16">
-                                <path d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.378 1.378 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51.136.02.285.037.443.051.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.896 1.896 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2.094 2.094 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.162 3.162 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.823 4.823 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-hand-thumbs-down-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.378 1.378 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51.136.02.285.037.443.051.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.896 1.896 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2.094 2.094 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.162 3.162 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.823 4.823 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591z" />
                             </svg>
-                             ({{post.dislikes}})</button>
+                            ({{post.dislikes}})</button>
                     </div>
                     <div class="d-flex mt-3">
                         <form class="flex-fill" [formGroup]="addCommentForm">
-                            <textarea rows="2" placeholder="Deja un comentario" class="form-control" formControlName="commentContent"></textarea>
+                            <textarea rows="2" placeholder="Deja un comentario" class="form-control"
+                                formControlName="commentContent"></textarea>
                         </form>
                         <div class="p-3 d-flex align-items-center justify-content-center">
-                            <button type="button" class="btn btn-primary" (click)="addComment(post.postId)">PUBLICAR</button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="addComment(post.postId)">PUBLICAR</button>
                         </div>
                     </div>
                     <div>
                         <div class="p-1 bg-light mt-3 border" *ngFor="let comment of post.comments">
                             <div class="d-flex">
                                 <div class="d-flex flex-fill align-items-center">
-                                    <img [style.objectFit]="'cover'" src="{{comment.userId.photoUrl}}" alt="" width="20" height="20" class="rounded-circle me-2" id="user-photo">
+                                    <img [style.objectFit]="'cover'" src="{{comment.userId.photoUrl}}" alt="" width="20"
+                                        height="20" class="rounded-circle me-2" id="user-photo">
                                     <h2 class="h6 d-inline ms-3">{{comment.userId.firstName}}</h2>
                                 </div>
                                 <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path
+                                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                                     </svg>
                                 </div>
                             </div>
@@ -89,13 +102,17 @@
                 <div class="d-flex flex-column">
                     <div class="d-flex mt-2" *ngFor="let unfriendUser of unfriendUsers">
                         <div class="d-flex flex-fill align-items-center">
-                            <img [style.objectFit]="'cover'" src="{{unfriendUser.photoUrl}}" alt="" width="25" height="25" class="rounded-circle me-2" id="user-photo">
+                            <img [style.objectFit]="'cover'" src="{{unfriendUser.photoUrl}}" alt="" width="25"
+                                height="25" class="rounded-circle me-2" id="user-photo">
                             <h2 class="h6 d-inline ms-3 mb-0">{{unfriendUser.firstName}}</h2>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary btn-sm" (click)="addFriendship(unfriendUser.userId)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            <button type="button" class="btn btn-primary btn-sm"
+                                (click)="addFriendship(unfriendUser.userId)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                                 </svg>
                             </button>
                         </div>

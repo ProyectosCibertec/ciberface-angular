@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ChangePassword } from '../schema/changepassword';
-import { EditUserInformation } from '../schema/edituserinformation';
 import { GetBasicUserInformation } from '../schema/getbasicuserinformation';
 import { User } from '../schema/user';
 
@@ -23,13 +21,5 @@ export class UserService {
 
   getFriendsByUser = (userId: number) => {
     return this.http.get<User[]>(`${this.url}/${userId}/get-friends`)
-  }
-
-  editUserInformation(userId: number, editUser: EditUserInformation) {
-    return this.http.put<EditUserInformation>(`${this.url}/${userId}/edit-user-information`, editUser);
-  }
-
-  changePassword(userId: number, password: ChangePassword) {
-    return this.http.put<ChangePassword>(`${this.url}/${userId}/change-password`, password);
   }
 }
