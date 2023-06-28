@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ChangePassword } from 'src/app/data/schema/changepassword';
 import { EditUserInformation } from 'src/app/data/schema/edituserinformation';
 import { GetBasicUserInformation } from 'src/app/data/schema/getbasicuserinformation';
 import { AuthService } from 'src/app/data/service/auth.service';

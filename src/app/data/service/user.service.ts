@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ChangePassword } from '../schema/changepassword';
-import { EditUserInformation } from '../schema/edituserinformation';
 import { GetBasicUserInformation } from '../schema/getbasicuserinformation';
 import { User } from '../schema/user';
+import { ChangePassword } from '../schema/changepassword';
+import { EditUserInformation } from '../schema/edituserinformation';
 
 @Injectable({
   providedIn: 'root'
