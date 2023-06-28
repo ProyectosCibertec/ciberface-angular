@@ -8,7 +8,7 @@ import { JwtRequest } from '../schema/jwtrequest';
 })
 export class AuthService {
   authUrl = 'http://localhost:8080/auth';
-  userUrl = 'http://localhost:8080/api/user/';
+  userUrl = 'http://localhost:8080/api/user';
 
   constructor(private http: HttpClient, private router: Router) { }
 

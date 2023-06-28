@@ -25,7 +25,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.url}/${userId}/get-friends`)
   }
 
-  editUserInformation(userId: number, editUser: EditUserInformation) {
+  editUserInformation(userId: number, editUser: any) {
     return this.http.put<EditUserInformation>(`${this.url}/${userId}/edit-user-information`, editUser);
   }
 

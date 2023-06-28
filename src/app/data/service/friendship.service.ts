@@ -11,7 +11,7 @@ export class FriendshipService {
   constructor(private http: HttpClient) { }
 
   add = (friendship: Friendship) => {
-    return this.http.post<Number>(`${this.url}/`, friendship)
+    return this.http.post<Number>(`${this.url}`, friendship)
   }
 
   getByFriendAndUserIds = (userId: number, friendId: number) => {

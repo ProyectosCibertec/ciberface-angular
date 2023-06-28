@@ -6,7 +6,6 @@ import { Message } from 'src/app/data/schema/message';
 import { User } from 'src/app/data/schema/user';
 import { ChatService } from 'src/app/data/service/chat.service';
 import { FriendshipService } from 'src/app/data/service/friendship.service';
-import { MessageService } from 'src/app/data/service/message.service';
 import { UserService } from 'src/app/data/service/user.service';
 
 @Component({
@@ -27,8 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService, 
     private friendshipService: FriendshipService, 
-    private chatService: ChatService, 
-    private messageService: MessageService, 
+    private chatService: ChatService,  
     private fb: FormBuilder
   ) { }
 
@@ -61,7 +59,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   getMessagesByChatId(chatId: number) {
-    this.messageService.getByChatId(chatId).subscribe((res) => {
+    this.chatService.getMessagesByChatId(chatId, (res: Message[]) => {
       this.messages = res
     })
   }
@@ -71,11 +69,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     message = Object.assign(message, this.addMessageForm.value)
     message.creationDate = new Date()
     message.userId.userId = this.user.userId
+    message.userId.photoUrl = this.user.photoUrl
     message.chatId.chatId = this.chat.chatId
-    this.messageService.add(message).subscribe((res) => {
-      this.chatService.sendMessage(res)
-      this.messages = this.chatService.getMessages()
-      this.addMessageForm.reset()
-    })
+    this.chatService.addMessage(message)
+    this.addMessageForm.reset()
   }
 }

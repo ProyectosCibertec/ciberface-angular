@@ -11,6 +11,6 @@ export class LikeService {
   constructor(private http: HttpClient) { }
 
   add = (like: Like) => {
-    return this.http.post<Like>(`${this.url}/`, like)
+    return this.http.post<Like>(`${this.url}`, like)
   }
 }
