@@ -11,7 +11,7 @@ export class CommentService {
   constructor(private http: HttpClient) { }
 
   list = () => {
-    return this.http.get<Comment[]>(`${this.url}/`)
+    return this.http.get<Comment[]>(`${this.url}`)
   }
 
   listByPostId = (postId: number) => {
@@ -23,6 +23,6 @@ export class CommentService {
   }
 
   add = (comment: Comment) => {
-    return this.http.post<Comment>(`${this.url}/`, comment)
+    return this.http.post<Comment>(`${this.url}`, comment)
   }
 }

@@ -15,6 +15,6 @@ export class PostService {
   }
 
   add = (post: Post) => {
-    return this.http.post<Post>(`${this.url}/`, post)
+    return this.http.post<Post>(`${this.url}`, post)
   }
 }

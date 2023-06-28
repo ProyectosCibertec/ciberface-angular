@@ -19,6 +19,6 @@ export class MessageService {
   }
 
   add = (message: Message) => {
-    return this.http.post<Message>(`${this.url}/`, message)
+    return this.http.post<Message>(`${this.url}`, message)
   }
 }

@@ -3,7 +3,6 @@ export class GetBasicUserInformation {
     firstName: string;
     lastName: string;
     userName: string;
-    email: string;
     biography: string;
     photoUrl: string;
     friendshipsAmount: number;
@@ -13,7 +12,6 @@ export class GetBasicUserInformation {
         this.firstName = "";
         this.lastName = "";
         this.userName = "";
-        this.email = "";
         this.biography = "";
         this.photoUrl = "";
         this.friendshipsAmount = 0;
