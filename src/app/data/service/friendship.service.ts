@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Friendship } from '../schema/friendship';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FriendshipService {
-  url = 'http://localhost:8080/api/friendship';
+  url = `${environment.baseUrl}/api/friendship`;
 
   constructor(private http: HttpClient) { }
 

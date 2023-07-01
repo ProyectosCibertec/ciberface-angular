@@ -4,12 +4,13 @@ import { GetBasicUserInformation } from '../schema/getbasicuserinformation';
 import { User } from '../schema/user';
 import { ChangePassword } from '../schema/changepassword';
 import { EditUserInformation } from '../schema/edituserinformation';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:8080/api/user';
+  url = `${environment.baseUrl}/api/user`;
 
   constructor(private http: HttpClient) { }
 

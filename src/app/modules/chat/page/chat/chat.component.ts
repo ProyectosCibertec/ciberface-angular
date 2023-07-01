@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Chat } from 'src/app/data/schema/chat';
 import { GetBasicUserInformation } from 'src/app/data/schema/getbasicuserinformation';
 import { Message } from 'src/app/data/schema/message';
 import { User } from 'src/app/data/schema/user';
 import { ChatService } from 'src/app/data/service/chat.service';
+import { ChatbotService } from 'src/app/data/service/chatbot.service';
 import { FriendshipService } from 'src/app/data/service/friendship.service';
 import { UserService } from 'src/app/data/service/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chat',
@@ -18,6 +21,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   friendUsers: User[] = []
   messages: Message[] = this.chatService.getMessages();
   chat: Chat = new Chat()
+  isSamuel: boolean = false
+  samuelSrc?: SafeResourceUrl
 
   addMessageForm = this.fb.group({
     messageContent: ['', Validators.required]
@@ -26,8 +31,10 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService, 
     private friendshipService: FriendshipService, 
-    private chatService: ChatService,  
-    private fb: FormBuilder
+    private chatService: ChatService, 
+    private chatbotService: ChatbotService, 
+    private fb: FormBuilder, 
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +46,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.userService.getFriendsByUser(parseInt(userId!)).subscribe((res) => {
       this.friendUsers = res
     })
+    this.chatbotService.getBotSamuel().subscribe((res) => {
+      this.samuelSrc = this.sanitizer.bypassSecurityTrustResourceUrl(environment.iframeWebchatUrl + res.toString())
+    })
   }
 
   ngOnDestroy(): void {
@@ -48,6 +58,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   getFriendship(friendId: number): void {
     this.friendshipService.getByFriendAndUserIds(this.user.userId, friendId).subscribe((res) => {
       this.getChat(res.chatId.chatId)
+      this.isSamuel = false
     })
   }
 

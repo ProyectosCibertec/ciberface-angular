@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Chat } from '../schema/chat';
 import { Message } from '../schema/message';
 import { MessageService } from './message.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  url = 'http://localhost:8080/api/chat';
+  url = `${environment.baseUrl}/api/chat`;
   socket?: WebSocket;
   messages: Message[] = []
 
@@ -26,7 +27,7 @@ export class ChatService {
   }
 
   connect = () => {
-    this.socket = new WebSocket('ws://localhost:8080/websocket/chat')
+    this.socket = new WebSocket(`${environment.baseWebSocketUrl}/websocket/chat`)
 
     this.socket.onopen = (event) => {
       console.log('Open: ', event);

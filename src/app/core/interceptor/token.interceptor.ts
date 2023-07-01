@@ -7,6 +7,7 @@ import {
     HttpInterceptor
 } from '@angular/common/http';
 import { AuthService } from 'src/app/data/service/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +19,9 @@ export class TokenInterceptor implements HttpInterceptor {
         request: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
+        if (request.url == environment.webchatUrl) {
+            return next.handle(request)
+        }
         const authToken = this.auth.getToken();
         if (authToken != null) {
             request = request.clone({
@@ -26,6 +30,6 @@ export class TokenInterceptor implements HttpInterceptor {
                 }
             });
         }
-        return next.handle(request);
+        return next.handle(request)
     }
 }
